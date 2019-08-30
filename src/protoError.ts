@@ -1,3 +1,5 @@
+const errorRegex = /^\[[^:]+:(\d+):\d+\] (.*)$/;
+
 export interface ProtoError {
   line: number;
   reason: string;
@@ -8,12 +10,17 @@ export function parseProtoError(error: string): ProtoError {
     return getEmptyProtoError();
   }
 
-  const errorLine = parseInt(error.split(":")[1], 10);
-  const errorReason = error.split("] ")[1];
+  let m = errorRegex.exec(error);
+
+  if (!m) {
+    return getEmptyProtoError();
+  }
+
+  let [, lineNo, errDesc] = m;
 
   const protoError: ProtoError = {
-    line: errorLine,
-    reason: errorReason
+    line: +lineNo,
+    reason: errDesc
   };
 
   return protoError;
