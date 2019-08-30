@@ -1,30 +1,13 @@
-# vscode-protolint [![License](https://img.shields.io/:license-mit-blue.svg)](https://github.com/plexsystems/vscode-protolint/blob/master/LICENSE) [![GitHub release](https://img.shields.io/github/release/plexsystems/vscode-protolint.svg)](https://github.com/plexsystems/vscode-protolint/releases)
+# vscode-apilint
 
-vscode-protolint is a protocol buffer linter for [Visual Studio Code](https://code.visualstudio.com/) that uses [protolint](https://github.com/yoheimuta/protolint) to validate linting rules.
-
-## Example
-
-Using the following `.protolint.yaml` configuration file
-
-```yaml
-lint:
-  rules:
-    no_default: true
-
-    add:
-      - MESSAGE_NAMES_UPPER_CAMEL_CASE
-      - SERVICE_NAMES_UPPER_CAMEL_CASE
-```
-
-![protobuflintexample](img/protobuflint_demo.gif)
+vscode-apilint is a vs code extension designed to work with the [API linter](github.com/thought-machine/protolint) already installed on machines
 
 ## Installation
+This extension is not available on the vscode extension market place and must be installed by downloading the extension and installing it manually
 
-This extension can be installed through the Visual Studio [marketplace](https://marketplace.visualstudio.com/items?itemName=Plex.vscode-protolint). Alternatively, a VSIX installer is available on the [releases](https://github.com/plexsystems/vscode-protolint/releases) page.
-
-```
-NOTE: protolint must be installed and available in your PATH
-```
+1. Go to the releases page and download the latest version
+2. Run `code --install-extension vscode-apilint-{version}.vsix` in the directory the extension was downloaded
+3. The extension should be running and should highlight any api errors in your proto files
 
 ## Local Development
 
