@@ -8,6 +8,11 @@ export interface LinterError {
   range: vscode.Range;
 }
 
+interface ExecResult {
+  stdout: string;
+  stderr: string;
+}
+
 export default class Linter {
   private codeDocument: vscode.TextDocument;
 
@@ -44,10 +49,12 @@ export default class Linter {
   private async runProtoLint(): Promise<string> {
     const currentFile = this.codeDocument.uri.fsPath;
     const exec = util.promisify(cp.exec);
-    const cmd = `protolint lint "${currentFile}"`;
+    const cmd = `apilint lint "${currentFile}"`;
 
     let lintResults: string = "";
-    await exec(cmd).catch((error: any) => lintResults = error.stderr);
+    await exec(cmd, {
+      cwd: vscode.workspace.rootPath
+    }).then((output : ExecResult) => lintResults = output.stdout);
 
     return lintResults;
   }
