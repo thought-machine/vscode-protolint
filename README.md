@@ -5,7 +5,7 @@ vscode-apilint is a vs code extension designed to work with the [API linter](git
 ## Installation
 This extension is not available on the vscode extension market place and must be installed by downloading the extension and installing it manually
 
-1. Go to the releases page and download the latest version
+1. Go to the [releases page](https://github.com/thought-machine/vscode-protolint/releases) and download the latest version
 2. Run `code --install-extension vscode-apilint-{version}.vsix` in the directory the extension was downloaded
 3. The extension should be running and should highlight any api errors in your proto files
 
